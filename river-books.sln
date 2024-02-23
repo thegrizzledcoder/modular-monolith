@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiverBooks.Web", "RiverBooks.Web\RiverBooks.Web.csproj", "{9363B075-21FA-474B-84D3-A4185DC08152}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiverBooks.Books", "RiverBooks.Books\RiverBooks.Books.csproj", "{8317BF83-BAE7-4521-9C28-7B10375C2B74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9363B075-21FA-474B-84D3-A4185DC08152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9363B075-21FA-474B-84D3-A4185DC08152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9363B075-21FA-474B-84D3-A4185DC08152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9363B075-21FA-474B-84D3-A4185DC08152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8317BF83-BAE7-4521-9C28-7B10375C2B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8317BF83-BAE7-4521-9C28-7B10375C2B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8317BF83-BAE7-4521-9C28-7B10375C2B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8317BF83-BAE7-4521-9C28-7B10375C2B74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

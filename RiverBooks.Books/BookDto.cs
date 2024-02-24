@@ -6,4 +6,4 @@ public readonly record struct BookId(Guid Value)
     public static BookId NewBookId() => new(Guid.NewGuid());
 }
 
-public record BookDto(BookId Id, string Title, string Author);
+public record BookDto(BookId Id, string Title, string Author, decimal Price);

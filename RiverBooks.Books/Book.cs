@@ -2,6 +2,18 @@
 
 namespace RiverBooks.Books;
 
+internal interface IBookRepository : IReadOnlyBookRepository
+{
+  Task Add(Book book);
+  Task Delete(Book book);
+  Task SaveChanges();
+}
+
+internal interface IReadOnlyBookRepository
+{
+  Task<Book?> GetById(BookId id);
+  Task<List<Book>> List();
+}
 internal class Book
 {
   public BookId Id { get; private set; } = BookId.NewBookId();

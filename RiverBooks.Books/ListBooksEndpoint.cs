@@ -17,7 +17,7 @@ internal class ListBooksEndpoint(IBookService bookService) :
       // ReSharper disable once OptionalParameterHierarchyMismatch
       CancellationToken cancellationToken = default)
     {
-        var books = bookService.ListBooks();
+        var books = await bookService.ListBooks();
         await SendAsync(new ListBooksResponse(books), cancellation: cancellationToken);
     }
 }

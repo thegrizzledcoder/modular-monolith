@@ -1,5 +1,4 @@
 ﻿using FastEndpoints;
-using Microsoft.AspNetCore.Builder;
 
 namespace RiverBooks.Books;
 
@@ -15,12 +14,10 @@ internal class ListBooksEndpoint(IBookService bookService) :
     }
 
     public override async Task HandleAsync(
-        CancellationToken cancellationToken = default)
+      // ReSharper disable once OptionalParameterHierarchyMismatch
+      CancellationToken cancellationToken = default)
     {
         var books = bookService.ListBooks();
-        await SendAsync(new ListBooksResponse()
-        {
-            Books = books
-        });
+        await SendAsync(new ListBooksResponse(books), cancellation: cancellationToken);
     }
 }

@@ -3,6 +3,7 @@ using FastEndpoints.Testing;
 using FluentAssertions;
 using RiverBooks.Books.BookEndpoints;
 using Xunit.Abstractions;
+using Xunit.Sdk;
 
 namespace RiverBooks.Books.Tests.Endpoints;
 

@@ -35,3 +35,4 @@ Desktop.ini
 appsettings.Development.json
 appsettings.Production.json
 appsettings.Staging.json
+appsettings.Testing.json

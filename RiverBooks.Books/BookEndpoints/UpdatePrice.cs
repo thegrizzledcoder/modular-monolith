@@ -1,5 +1,6 @@
 ﻿using FastEndpoints;
 using RiverBooks.Books.Application;
+using RiverBooks.Books.Domain;
 
 namespace RiverBooks.Books.BookEndpoints;
 

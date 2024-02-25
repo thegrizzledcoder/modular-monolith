@@ -1,13 +1,12 @@
 ﻿using Ardalis.GuardClauses;
-using RiverBooks.Books.Application;
 
 namespace RiverBooks.Books.Domain;
 
 public class Book
 {
-  public BookId Id { get; private set; } = BookId.NewBookId();
-  public string Title { get; private set; } = string.Empty;
-  public string Author { get; private set; } = string.Empty;
+  public BookId Id { get; private set; }
+  public string Title { get; private set; }
+  public string Author { get; private set; }
   public decimal Price { get; private set; }
   
   internal Book(BookId id, string title, string author, decimal price)

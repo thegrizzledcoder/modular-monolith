@@ -1,6 +1,45 @@
 @RiverBooks.Web_HostAddress = http://localhost:5200
 
-GET {{RiverBooks.Web_HostAddress}}/books/
+GET {{RiverBooks.Web_HostAddress}}/books
 Accept: application/json
 
 ###
+
+@BookID=1cd306a6-8cfe-4719-b8f6-bfbc44202833
+GET {{RiverBooks.Web_HostAddress}}/books/{{BookID}}
+Accept: application/json
+
+###
+
+POST {{RiverBooks.Web_HostAddress}}/books
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": "464000FD-B25D-4E93-8010-020D36D7BD23",
+  "title": "Modular Monoliths - Getting Started",
+  "author": "Steve Smith",
+  "price": 29.99
+}
+
+###
+
+# Test the location header
+GET {{RiverBooks.Web_HostAddress}}/books/464000FD-B25D-4E93-8010-020D36D7BD23
+Accept: application/json
+
+###
+
+DELETE {{RiverBooks.Web_HostAddress}}/books/464000FD-B25D-4E93-8010-020D36D7BD23
+Accept: application/json
+
+###
+
+PATCH {{RiverBooks.Web_HostAddress}}/books/464000FD-B25D-4E93-8010-020D36D7BD23/priceHistory
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": "464000FD-B25D-4E93-8010-020D36D7BD23",
+  "newPrice": 19.99
+}

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RiverBooks.Books.Application;
+using RiverBooks.Books.Domain;
 
-namespace RiverBooks.Books;
+namespace RiverBooks.Books.Data;
 
 internal class EfBookRepository : IBookRepository
 {
@@ -12,7 +14,7 @@ internal class EfBookRepository : IBookRepository
   }
   public async Task<Book?> GetById(BookId id)
   {
-    return await _dbContext!.Books.FindAsync(id.Value);
+    return await _dbContext!.Books.FindAsync(id);
   }
 
   public async Task<List<Book>> List()

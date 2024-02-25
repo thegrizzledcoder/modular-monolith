@@ -1,5 +1,6 @@
 using FastEndpoints;
 using RiverBooks.Books;
+using RiverBooks.Books.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,3 +27,8 @@ app.UseHttpsRedirection();
 app.UseFastEndpoints();
 
 app.Run();
+
+// Needed for testing
+public partial class Program
+{
+};

@@ -20,4 +20,8 @@
     <ProjectReference Include="..\RiverBooks.Books\RiverBooks.Books.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="appsettings.Development.json" />
+  </ItemGroup>
+
 </Project>

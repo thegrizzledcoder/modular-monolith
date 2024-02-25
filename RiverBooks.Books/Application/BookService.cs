@@ -1,4 +1,7 @@
-namespace RiverBooks.Books;
+using RiverBooks.Books.Data;
+using RiverBooks.Books.Domain;
+
+namespace RiverBooks.Books.Application;
 
 internal class BookService : IBookService
 {
@@ -11,21 +14,20 @@ internal class BookService : IBookService
     public async Task<List<BookDto>> ListBooks()
     {
       var books = (await _bookRepository.List())
-        .Select(book => new BookDto(book.Id, book.Title, book.Author, book.Price))
+        .Select(book => new BookDto(book.Id.Value, book.Title, book.Author, book.Price))
         .ToList();
       return books;
     }
 
-    public async Task<BookDto> GetBookById(BookId bookId)
+    public async Task<BookDto?> GetBookById(BookId bookId)
     {
       var book = await _bookRepository.GetById(bookId);
-      // TODO: handle not found
-      return new BookDto(book!.Id, book.Title, book.Author, book.Price);
+      return book is null ? null : new BookDto(book!.Id.Value, book.Title, book.Author, book.Price);
     }
 
     public async Task CreateBook(BookDto newBook)
     {
-      var book = new Book(newBook.Id, newBook.Title, newBook.Author, newBook.Price);
+      var book = new Book(BookId.From(newBook.Id), newBook.Title, newBook.Author, newBook.Price);
       
       await _bookRepository.Add(book);
       await _bookRepository.SaveChanges();

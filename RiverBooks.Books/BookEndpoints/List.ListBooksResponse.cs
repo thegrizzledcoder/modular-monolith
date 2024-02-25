@@ -1,4 +1,6 @@
-namespace RiverBooks.Books;
+using RiverBooks.Books.Application;
+
+namespace RiverBooks.Books.BookEndpoints;
 
 public class ListBooksResponse(List<BookDto> books)
 {

@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using RiverBooks.Books.Application;
+using RiverBooks.Books.Domain;
 
-namespace RiverBooks.Books;
+namespace RiverBooks.Books.Data;
 
 internal class BookConfiguration : IEntityTypeConfiguration<Book> {
   public void Configure(EntityTypeBuilder<Book> builder)

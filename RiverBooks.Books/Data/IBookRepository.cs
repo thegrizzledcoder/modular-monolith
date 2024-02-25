@@ -1,4 +1,6 @@
-﻿namespace RiverBooks.Books;
+﻿using RiverBooks.Books.Domain;
+
+namespace RiverBooks.Books.Data;
 
 internal interface IBookRepository : IReadOnlyBookRepository
 {

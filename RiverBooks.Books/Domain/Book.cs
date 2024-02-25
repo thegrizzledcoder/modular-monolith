@@ -1,6 +1,7 @@
 ﻿using Ardalis.GuardClauses;
+using RiverBooks.Books.Application;
 
-namespace RiverBooks.Books;
+namespace RiverBooks.Books.Domain;
 
 public class Book
 {

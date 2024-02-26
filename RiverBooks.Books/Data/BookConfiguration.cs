@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RiverBooks.Books.Application;
 using RiverBooks.Books.Domain;
 
 namespace RiverBooks.Books.Data;
@@ -8,9 +7,13 @@ namespace RiverBooks.Books.Data;
 internal class BookConfiguration : IEntityTypeConfiguration<Book> {
   public void Configure(EntityTypeBuilder<Book> builder)
   {
-    builder.Property(b => b.Id).HasConversion(b => b.Value, b => new BookId(b));
+    builder.Property(b => b.Id)
+      .HasConversion(b => b.Value, b => new BookId(b));
     builder.Property(b => b.Title).HasMaxLength(DataSchemaConstants.DEFAULT_NAME_LENGTH).IsRequired();
     builder.Property(b => b.Author).HasMaxLength(DataSchemaConstants.DEFAULT_NAME_LENGTH).IsRequired();
+
+    builder.HasKey(b => b.Id)
+      .IsClustered(false);
 
     builder.HasData(GetSampleBookData());
   }

@@ -14,13 +14,42 @@ public static class UserModuleExtensions
     ILogger logger)
   {
     var connectionString = config.GetConnectionString("UsersConnectionString");
+
     services.AddDbContext<UsersDbContext>(options =>
       options.UseSqlServer(connectionString));
 
     services.AddIdentityCore<ApplicationUser>()
       .AddEntityFrameworkStores<UsersDbContext>()
       .AddDefaultTokenProviders();
+    services.AddAuthentication();
     
+    services.Configure<IdentityOptions>(options =>
+    {
+      options.Password.RequireDigit = true;
+      options.Password.RequireLowercase = true;
+      options.Password.RequireUppercase = true;
+      options.Password.RequireNonAlphanumeric = true;
+      options.Password.RequiredLength = 16;
+      options.Password.RequiredUniqueChars = 4;
+      
+      // Lockout settings
+      options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+      options.Lockout.MaxFailedAccessAttempts = 5;
+      options.Lockout.AllowedForNewUsers = true;
+      
+      // User settings
+      options.User.RequireUniqueEmail = true;
+    });
+
+    services.ConfigureApplicationCookie(options =>
+    {
+      // Cookie settings
+      options.Cookie.HttpOnly = true;
+      options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+      options.LoginPath = "/Identity/Account/Login";
+      options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+      options.SlidingExpiration = true;
+    });
     logger.Information("{Module} module services registered", "Users");
 
     return services;

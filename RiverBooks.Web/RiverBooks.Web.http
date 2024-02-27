@@ -1,4 +1,4 @@
-@RiverBooks.Web_HostAddress = http://localhost:5200
+@RiverBooks.Web_HostAddress = https://localhost:7120
 
 GET {{RiverBooks.Web_HostAddress}}/books
 Accept: application/json
@@ -43,3 +43,31 @@ Content-Type: application/json
   "id": "464000FD-B25D-4E93-8010-020D36D7BD23",
   "newPrice": 9.99
 }
+
+###
+
+POST {{RiverBooks.Web_HostAddress}}/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "John Hamilton",
+  "email": "john@thegrizzledcoder.com",
+  "password": "etw_CFX2atb6qec-ctd"
+}
+
+###
+
+POST {{RiverBooks.Web_HostAddress}}/users/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "john@thegrizzledcoder.com",
+  "password": "etw_CFX2atb6qec-ctd"
+}
+
+###
+
+@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJqb2huQHRoZWdyaXp6bGVkY29kZXIuY29tIiwiaWF0IjoxNzA5MDY4NDk2LCJleHAiOjE3MDkwNzIwOTYsIm5iZiI6MTcwOTA2ODQ5Nn0.TCiHR-jml4bS0bqWZRe3EvVOqk3WSSthRkXTgPpvzYE
+

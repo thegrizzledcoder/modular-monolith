@@ -1,4 +1,6 @@
 using FastEndpoints;
+using FastEndpoints.Security;
+using FastEndpoints.Swagger;
 using RiverBooks.Books.Application;
 using RiverBooks.Users.Application;
 using Serilog;
@@ -13,9 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddFastEndpoints();
+builder.Services.AddFastEndpoints()
+  .AddJWTBearerAuth(builder.Configuration["Auth:JwtSecret"]!)
+  .AddAuthorization()
+  .SwaggerDocument();
 
 // Add Module Services
 builder.Services.AddBookService(builder.Configuration, logger);
@@ -24,15 +27,11 @@ builder.Services.AddUserModuleServices(builder.Configuration, logger);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseAuthentication()
+  .UseAuthorization();
 
-app.UseHttpsRedirection();
-
-app.UseFastEndpoints();
+app.UseFastEndpoints()
+  .UseSwaggerGen();
 
 app.Run();
 

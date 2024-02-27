@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="FastEndpoints.Security" Version="5.22.0" />
       <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="8.0.2" />
       <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="8.0.2" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
@@ -15,6 +16,15 @@
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
       <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="FastEndpoints">
+        <HintPath>..\..\..\.nuget\packages\fastendpoints\5.22.0\lib\net8.0\FastEndpoints.dll</HintPath>
+      </Reference>
+      <Reference Include="FastEndpoints.Attributes">
+        <HintPath>..\..\..\.nuget\packages\fastendpoints.attributes\5.22.0\lib\netstandard2.0\FastEndpoints.Attributes.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

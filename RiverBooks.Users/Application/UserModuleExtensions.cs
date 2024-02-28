@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using System.Reflection;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RiverBooks.Users.Data;
+using RiverBooks.Users.UseCases;
 using Serilog;
 
 namespace RiverBooks.Users.Application;
@@ -11,7 +12,7 @@ public static class UserModuleExtensions
 {
   public static IServiceCollection AddUserModuleServices(this IServiceCollection services,
     ConfigurationManager config,
-    ILogger logger)
+    ILogger logger, List<Assembly> mediatRAssemblies)
   {
     var connectionString = config.GetConnectionString("UsersConnectionString");
 
@@ -22,6 +23,9 @@ public static class UserModuleExtensions
       .AddEntityFrameworkStores<UsersDbContext>()
       .AddDefaultTokenProviders();
     services.AddAuthentication();
+    
+    // Add User Services
+    services.AddScoped<IApplicationUserRepository, EfApplicationUserRepository>();
     
     services.Configure<IdentityOptions>(options =>
     {
@@ -50,6 +54,8 @@ public static class UserModuleExtensions
       options.AccessDeniedPath = "/Identity/Account/AccessDenied";
       options.SlidingExpiration = true;
     });
+    
+    mediatRAssemblies.Add(typeof(UserModuleExtensions).Assembly);
     logger.Information("{Module} module services registered", "Users");
 
     return services;

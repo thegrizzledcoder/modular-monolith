@@ -69,5 +69,21 @@ Content-Type: application/json
 
 ###
 
-@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJqb2huQHRoZWdyaXp6bGVkY29kZXIuY29tIiwiaWF0IjoxNzA5MDY4NDk2LCJleHAiOjE3MDkwNzIwOTYsIm5iZiI6MTcwOTA2ODQ5Nn0.TCiHR-jml4bS0bqWZRe3EvVOqk3WSSthRkXTgPpvzYE
+@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJqb2huQHRoZWdyaXp6bGVkY29kZXIuY29tIiwiaWF0IjoxNzA5MTQ2MTMwLCJleHAiOjE3MDkxNDk3MzAsIm5iZiI6MTcwOTE0NjEzMH0.qy_yWMlgqopFOB6bS1v4IcNu-qw6PvKm4h9Z09P7TBw
 
+### Add item to cart
+POST {{RiverBooks.Web_HostAddress}}/cart
+Accept: text/plain
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "bookId": "464000FD-B25D-4E93-8010-020D36D7BD23",
+  "quantity": 1
+}
+
+### List cart items
+GET {{RiverBooks.Web_HostAddress}}/cart
+Accept: text/plain
+Authorization: Bearer {{token}}
+Content-Type: application/json

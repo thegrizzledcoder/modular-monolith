@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 
 namespace RiverBooks.Users.Data;
 
@@ -11,6 +10,7 @@ public class UsersDbContext : IdentityDbContext<ApplicationUser>
   }
 
   public DbSet<ApplicationUser> ApplicationUsers { get; set; } = null!;
+  public DbSet<CartItem> CartItems { get; set; } = null!;
 
   protected override void OnModelCreating(ModelBuilder builder)
   {

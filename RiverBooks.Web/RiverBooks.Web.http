@@ -84,6 +84,7 @@ Content-Type: application/json
 
 ### List cart items
 GET {{RiverBooks.Web_HostAddress}}/cart
-Accept: text/plain
+Accept: application/json
 Authorization: Bearer {{token}}
-Content-Type: application/json
+
+###

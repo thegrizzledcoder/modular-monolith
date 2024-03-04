@@ -2,7 +2,6 @@
 using Ardalis.Result;
 using FastEndpoints;
 using MediatR;
-using RiverBooks.Books.Domain;
 using RiverBooks.Users.UseCases;
 
 namespace RiverBooks.Users.Cart_Endpoints;
@@ -26,7 +25,7 @@ public class AddItem : Endpoint<AddCartItemRequest>
   {
     var emailAddress = User.FindFirstValue("EmailAddress");
 
-    var command = new AddItemToCartCommand(new BookId(req.BookId), req.Quantity, emailAddress!);
+    var command = new AddItemToCartCommand(req.BookId, req.Quantity, emailAddress!);
 
     var result = await _mediator.Send(command, ct);
 

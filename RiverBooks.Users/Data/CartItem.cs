@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Ardalis.GuardClauses;
-using RiverBooks.Books.Domain;
 
 namespace RiverBooks.Users.Data;
 
 public class CartItem
 {
-  public CartItem(BookId bookId, string description, int quantity, decimal unitPrice)
+  public CartItem(Guid bookId, string description, int quantity, decimal unitPrice)
   {
     Id = new CartItemId(Guid.NewGuid());
     BookId = Guard.Against.Default(bookId);
@@ -16,7 +15,7 @@ public class CartItem
   }
 
   public CartItemId Id { get; private set; }
-  public BookId BookId { get; private set; }
+  public Guid BookId { get; private set; }
   
   [MaxLength(1000)]
   public string Description { get; private set; }
@@ -26,5 +25,15 @@ public class CartItem
   internal void UpdateQuantity(int quantity)
   {
     Quantity = Guard.Against.Negative(quantity);
+  }
+
+  public void UpdateDescription(string itemDescription)
+  {
+    Description = Guard.Against.NullOrEmpty(itemDescription);
+  }
+
+  public void UpdatePrice(decimal itemUnitPrice)
+  {
+    UnitPrice = Guard.Against.Negative(itemUnitPrice);
   }
 }

@@ -27,7 +27,7 @@ internal class ListCartItemsQueryHandler : IRequestHandler<ListCartItemsQuery,
 
     return user.CartItems
       .Select(item =>
-        new CartItemDto(item.Id.Value, item.BookId.Value, item.Description, item.Quantity, item.UnitPrice))
+        new CartItemDto(item.Id.Value, item.BookId, item.Description, item.Quantity, item.UnitPrice))
       .ToList();
   }
 }

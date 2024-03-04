@@ -18,7 +18,8 @@ public class ApplicationUser : IdentityUser
     if (existingBook != null)
     {
       existingBook.UpdateQuantity(existingBook.Quantity + item.Quantity);
-      // TODO: What to do if other details of the item have been updated?
+      existingBook.UpdateDescription(item.Description);
+      existingBook.UpdatePrice(item.UnitPrice);
       return;
     }
     _cartItems.Add(item);

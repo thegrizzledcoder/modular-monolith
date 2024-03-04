@@ -42,6 +42,4 @@ app.UseFastEndpoints()
 app.Run();
 
 // Needed for testing
-public partial class Program
-{
-};
+public partial class Program { };
